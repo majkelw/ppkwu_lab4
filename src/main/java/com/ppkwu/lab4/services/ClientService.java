@@ -10,10 +10,10 @@ public class ClientService {
 
     private final WebClient webClient = WebClient.create("http://localhost:8081");
 
-    public Mono<String> getResponse(String requiredFormatParam, String strParam) {
+    public Mono<String> getStringStats(String downloadFormatParam, String strParam) {
         return webClient
                 .get()
-                .uri("/api/{requiredFormatParam}/string?str={strParam}", requiredFormatParam, strParam)
+                .uri("/api/{download_format_param}/string?str={str_param}", downloadFormatParam, strParam)
                 .retrieve()
                 .bodyToMono(String.class);
     }
