@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class JsonConverterService {
 
-    public String convertTo(String json, String outputFormat) {
-        switch (outputFormat) {
+    public String convertTo(String json, String format) {
+        switch (format) {
             case DataFormatType.XML:
                 return toXml(json);
             case DataFormatType.CSV:
@@ -19,7 +19,7 @@ public class JsonConverterService {
             case DataFormatType.TXT:
                 return toTxt(json);
         }
-        throw new IllegalArgumentException("Invalid format type : " + outputFormat);
+        throw new IllegalArgumentException("Invalid format type : " + format);
     }
 
     public String toXml(String json) {
