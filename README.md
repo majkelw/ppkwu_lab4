@@ -5,7 +5,7 @@
 This API enables downloading and printing string stats like number of digits, uppercase, lowercase, special chars in
 specified data format Also API enables conversion between different data formats
 
-# Fetching string stats and print them in specified format
+# Downloading string stats and print them in the specified format
 
 ## Description
 
