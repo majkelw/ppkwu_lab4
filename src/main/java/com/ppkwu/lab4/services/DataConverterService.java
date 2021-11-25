@@ -17,6 +17,8 @@ public class DataConverterService {
     private JsonConverterService jsonConverterService;
 
     public String convert(String data, String inputFormat, String outputFormat) {
+        if(inputFormat.equals(outputFormat))
+            return data;
         switch (inputFormat) {
             case DataFormatType.JSON:
                 return jsonConverterService.convertTo(data, outputFormat);
@@ -26,11 +28,12 @@ public class DataConverterService {
                 return convertCsvTo(data, outputFormat);
             case DataFormatType.TXT:
                 return convertTxtTo(data, outputFormat);
+            default:
+                return "Incorrect input format";
         }
-        return null;
     }
 
-    public String convertXmlTo(String xml, String format) {
+    private String convertXmlTo(String xml, String format) {
         String json = XML.toJSONObject(xml).get("data").toString();
         if (format.equals(DataFormatType.JSON))
             return json;
@@ -39,7 +42,7 @@ public class DataConverterService {
         return null;
     }
 
-    public String convertCsvTo(String csv, String format) {
+    private String convertCsvTo(String csv, String format) {
         csv = csv.replaceAll("\\r", "");
         String json = CDL.toJSONArray(csv).get(0).toString();
         if (format.equals(DataFormatType.JSON))
@@ -49,7 +52,7 @@ public class DataConverterService {
         return null;
     }
 
-    public String convertTxtTo(String txt, String format) {
+    private String convertTxtTo(String txt, String format) {
         JSONObject jsonObject = new JSONObject();
         String[] lines = txt.split("\n");
         Pattern pattern = Pattern.compile("(\\w+): (\\S+)");

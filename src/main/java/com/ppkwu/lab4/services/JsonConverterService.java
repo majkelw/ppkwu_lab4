@@ -18,21 +18,22 @@ public class JsonConverterService {
                 return toCsv(json);
             case DataFormatType.TXT:
                 return toTxt(json);
+            default:
+                return "Incorrect input format";
         }
-        throw new IllegalArgumentException("Invalid format type : " + format);
     }
 
-    public String toXml(String json) {
+    private String toXml(String json) {
         return "<data>" + XML.toString(new JSONObject(json)) + "</data>";
     }
 
-    public String toCsv(String json) {
+    private String toCsv(String json) {
         JSONArray jsonArray = new JSONArray();
         jsonArray.put(new JSONObject(json));
         return CDL.toString(jsonArray);
     }
 
-    public String toTxt(String json) {
+    private String toTxt(String json) {
         JSONObject jsonObject = new JSONObject(json);
         StringBuilder txt = new StringBuilder();
         jsonObject.keySet().forEach(key -> {

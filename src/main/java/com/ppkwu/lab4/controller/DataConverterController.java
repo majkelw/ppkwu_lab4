@@ -42,7 +42,6 @@ public class DataConverterController {
     public String printStringStatsFromServiceAsJson
             (@PathVariable("download_format") String downloadFormat, @RequestParam("str") String str) {
         String downloadedData = clientService.getStringStats(downloadFormat, str).block();
-        System.out.println(downloadedData);
         return dataConverterService.convert(downloadedData, downloadFormat, DataFormatType.JSON);
     }
 
