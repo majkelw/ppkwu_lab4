@@ -37,10 +37,33 @@ public class DataConverterController {
         return dataConverterService.convert(data, from, DataFormatType.TXT);
     }
 
+
     @GetMapping(value = "api/stats/{download_format}/json/string", produces = {MediaType.APPLICATION_JSON_VALUE})
     public String printStringStatsFromServiceAsJson
             (@PathVariable("download_format") String downloadFormat, @RequestParam("str") String str) {
         String downloadedData = clientService.getStringStats(downloadFormat, str).block();
+        System.out.println(downloadedData);
         return dataConverterService.convert(downloadedData, downloadFormat, DataFormatType.JSON);
+    }
+
+    @GetMapping(value = "api/stats/{download_format}/xml/string", produces = {MediaType.APPLICATION_XML_VALUE})
+    public String printStringStatsFromServiceAsXml
+            (@PathVariable("download_format") String downloadFormat, @RequestParam("str") String str) {
+        String downloadedData = clientService.getStringStats(downloadFormat, str).block();
+        return dataConverterService.convert(downloadedData, downloadFormat, DataFormatType.XML);
+    }
+
+    @GetMapping(value = "api/stats/{download_format}/csv/string", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public String printStringStatsFromServiceAsCsv
+            (@PathVariable("download_format") String downloadFormat, @RequestParam("str") String str) {
+        String downloadedData = clientService.getStringStats(downloadFormat, str).block();
+        return dataConverterService.convert(downloadedData, downloadFormat, DataFormatType.CSV);
+    }
+
+    @GetMapping(value = "api/stats/{download_format}/txt/string", produces = {MediaType.TEXT_PLAIN_VALUE})
+    public String printStringStatsFromServiceAsTxt
+            (@PathVariable("download_format") String downloadFormat, @RequestParam("str") String str) {
+        String downloadedData = clientService.getStringStats(downloadFormat, str).block();
+        return dataConverterService.convert(downloadedData, downloadFormat, DataFormatType.TXT);
     }
 }
