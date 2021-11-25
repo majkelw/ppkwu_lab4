@@ -26,7 +26,7 @@ txt<br>
 http://localhost:8082/api/converter/xml/json
 ```
 
-####Input body
+<b>Input body</b>
 ```xml
 <data>
     <str>al4/A3zSa9ot_tyOx-ek*</str>
@@ -36,7 +36,7 @@ http://localhost:8082/api/converter/xml/json
     <numberOfDigits>3</numberOfDigits>
 </data>
 ```
-####Response result
+<b>Response result</b>
 
 ```json
 {
@@ -53,7 +53,7 @@ http://localhost:8082/api/converter/xml/json
 http://localhost:8082/api/converter/json/csv
 ```
 
-####Input body
+<b>Input body</b>
 ```json
 {
   "str": "al4/A3zSa9ot_tyOx-ek*",
@@ -63,7 +63,7 @@ http://localhost:8082/api/converter/json/csv
   "numberOfDigits": 3
 }
 ```
-####Response result
+<b>Response result</b>
 ```
 str,numberOfUppercase,numberOfSpecialChars,numberOfLowercase,numberOfDigits
 al4/A3zSa9ot_tyOx-ek*,3,4,11,3
@@ -74,12 +74,12 @@ al4/A3zSa9ot_tyOx-ek*,3,4,11,3
 http://localhost:8082/api/converter/csv/txt
 ```
 
-####Input body
+<b>Input body</b>
 ```
 str,numberOfUppercase,numberOfSpecialChars,numberOfLowercase,numberOfDigits
 al4/A3zSa9ot_tyOx-ek*,3,4,11,3
 ```
-####Response result
+<b>Response result</b>
 ```
 str: al4/A3zSa9ot_tyOx-ek*
 numberOfUppercase: 3
@@ -93,7 +93,7 @@ numberOfDigits: 33
 http://localhost:8082/api/converter/txt/xml
 ```
 
-####Input body
+<b>Input body</b>
 ```
 str: al4/A3zSa9ot_tyOx-ek*
 numberOfUppercase: 3
@@ -101,7 +101,7 @@ numberOfSpecialChars: 4
 numberOfLowercase: 11
 numberOfDigits: 3
 ```
-####Response result
+<b>Response result</b>
 ```xml
 <data>
     <str>al4/A3zSa9ot_tyOx-ek*</str>
