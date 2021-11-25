@@ -1,5 +1,6 @@
 package com.ppkwu.lab4.services;
 
+import com.ppkwu.lab4.utils.DataFormatType;
 import org.json.CDL;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,6 +9,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JsonConverterService {
+
+    public String convertTo(String json, String outputFormat) {
+        switch (outputFormat) {
+            case DataFormatType.XML:
+                return toXml(json);
+            case DataFormatType.CSV:
+                return toCsv(json);
+            case DataFormatType.TXT:
+                return toTxt(json);
+        }
+        throw new IllegalArgumentException("Invalid format type : " + outputFormat);
+    }
 
     public String toXml(String json) {
         return "<data>" + XML.toString(new JSONObject(json)) + "</data>";
